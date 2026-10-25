@@ -43,7 +43,7 @@ jobs:
           gradle assembleDebug --stacktrace --console=plain > build-output.txt 2>&1
           result=$?
           tail -n 90 build-output.txt
-          grep -E '^(e: |FAILURE:|\\* What went wrong:|> |Execution failed|.*\\.kt:[0-9]+:)' build-output.txt | head -n 20 | while IFS= read -r line; do echo "::error::$line"; done
+          grep -E 'FAILURE:|What went wrong:|Execution failed|Caused by:|^e:|error:|FAILED' build-output.txt | tail -n 20 | while IFS= read -r line; do echo "::error::$line"; done
           exit "$result"
 
       - name: Upload build diagnostics
