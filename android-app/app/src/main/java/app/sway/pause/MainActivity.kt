@@ -153,7 +153,7 @@ class MainActivity : Activity() {
             textSize = 14f
             setTextColor(INK)
             setHintTextColor(0xFF9A9F99.toInt())
-            singleLine = true
+            setSingleLine(true)
             background = rounded(Color.WHITE, 13, LINE)
             setPadding(dp(14), 0, dp(14), 0)
             importantForAutofill = View.IMPORTANT_FOR_AUTOFILL_NO

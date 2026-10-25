@@ -103,7 +103,7 @@ class BridgeActivity : Activity() {
         val orbText = LinearLayout(this).apply {
             orientation = LinearLayout.VERTICAL
             gravity = Gravity.CENTER
-            isImportantForAccessibility = false
+            importantForAccessibility = View.IMPORTANT_FOR_ACCESSIBILITY_NO
         }
         phaseLabel = text(phases[0].first, 9, 0xFF405341.toInt(), true).apply { gravity = Gravity.CENTER; letterSpacing = .1f }
         countLabel = text("4", 39, 0xFF34443B.toInt(), true).apply { gravity = Gravity.CENTER; setPadding(0, dp(1), 0, dp(1)) }
