@@ -37,7 +37,23 @@ jobs:
           gradle-version: "8.13"
 
       - name: Assemble debug APK
-        run: gradle assembleDebug
+        shell: bash
+        run: |
+          set +e
+          gradle assembleDebug --stacktrace --console=plain > build-output.txt 2>&1
+          result=$?
+          tail -n 90 build-output.txt
+          grep -E '^(e: |FAILURE:|\\* What went wrong:|> |Execution failed|.*\\.kt:[0-9]+:)' build-output.txt | head -n 20 | while IFS= read -r line; do echo "::error::$line"; done
+          exit "$result"
+
+      - name: Upload build diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: android-build-diagnostics
+          path: android-app/build-output.txt
+          if-no-files-found: ignore
+          retention-days: 7
 
       - name: Upload installable debug APK
         uses: actions/upload-artifact@v4
