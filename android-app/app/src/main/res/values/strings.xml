@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Sway</string>
+    <string name="accessibility_service_description">Detects when a selected app opens so Sway can show your pause screen. Reads only the app package name, not screen text or content.</string>
+</resources>

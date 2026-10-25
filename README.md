@@ -1,34 +1,36 @@
-# Sway — interactive web preview
+# Sway — native Android mindful-pause app
 
-Sway is a mobile-first, clickable prototype for a mindful pause app. It demonstrates selecting several apps at once, toggling a pause on each, previewing a breath-and-choice screen, setting gentle rituals, and viewing sample insights. App choices and demo interactions are stored in the browser's local storage.
+This repository now contains a native Android implementation of the core interaction: choose one or more installed apps, enable Sway's accessibility service, and see a pause bridge when a chosen app opens. The bridge offers **Continue** (returns to the selected app) or **Not now** (returns to the home screen). It is a gentle intervention, not an app lock.
 
-## Important scope note
+## Get an installable APK
 
-This is a **web prototype**, not an installed Android app. It cannot detect when Instagram, TikTok, or another app opens, and its “Continue” action does not launch another app. The pause flow is simulated in the browser. The charts and initial counters are sample values. A real Android implementation would need native app-target detection and interruption behavior, app selection/usage permissions, clear disclosures and consent, device testing, and Google Play policy review.
+A GitHub Actions workflow builds a debug APK for each push to the project branch. Once the **Build Sway Android app** workflow completes successfully:
 
-## Preview it
+1. Open the repository's **Actions** tab.
+2. Open the latest **Build Sway Android app** run.
+3. In **Artifacts**, download **`sway-debug-apk`** and extract it.
+4. Transfer `app-debug.apk` to your Android phone, tap it, and approve installation if Android asks.
+5. Open **Sway**, choose apps, and tap **Enable pause detection**.
+6. Read the in-app Accessibility disclosure, continue to Android **Settings → Accessibility → Sway app pause**, and enable it.
+7. Open one of the selected apps. Sway should show the breathing bridge; choose **Continue** or **Not now**.
 
-### Run locally
+Android may require you to explicitly allow installing an APK from the browser or file manager you used. Debug APKs are for testing, not Play Store distribution.
 
-1. Download and extract `Sway-Web-Preview.zip` (or use the project files directly).
-2. Install Python 3 if it is not already available.
-3. In a terminal, change into the extracted folder and run:
+## Build locally
 
-   ```sh
-   python3 -m http.server 4173
-   ```
+Open the `android-app` directory in Android Studio (Meerkat 2024.3.1 Patch 1 or newer) and let Gradle sync. The project uses JDK 17, Android SDK Platform 36, and Build Tools 36.0.0. From a machine with Android SDK and Gradle installed, you can also run:
 
-4. Open `http://localhost:4173` in a modern browser.
+```sh
+cd android-app
+gradle assembleDebug
+```
 
-On Windows, `py -m http.server 4173` can be used instead of `python3 -m http.server 4173`.
+The output is `android-app/app/build/outputs/apk/debug/app-debug.apk`.
 
-You can also open `index.html` directly, though serving the folder locally is the more reliable option. The prototype has no build step, package manager, or remote application backend.
+## Privacy and platform behavior
 
-## What to try
-
-- **Today:** select “Try a pause,” then choose to continue or step away.
-- **My apps:** add multiple apps at once, search the sample catalogue, turn pauses on/off, sort the list, or remove an app.
-- **Rituals:** create a named reminder, choose days and time, and toggle it.
-- **Insights:** view the sample progress dashboard.
-
-Your demo data is saved in this browser only. Use the browser's site-data controls to reset it.
+- The user explicitly selects the app packages to monitor; the service updates its event filter to those selected packages.
+- The Accessibility Service listens to window-state changes only. `canRetrieveWindowContent` is disabled: the service does not read view text or screen contents.
+- App selection and consent are stored in local SharedPreferences. The app requests no Internet permission and includes no analytics SDK.
+- Accessibility access is optional and can be switched off in Android Settings. Sway does not attempt to prevent users from disabling or uninstalling it.
+- This is an early, unsigned-for-release debug build. The Android project has not yet been validated on a device or approved for Google Play. OEM behavior, Android accessibility-policy review, and supported-device testing remain to be completed.
