@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#f7f7f3" />
+  <meta name="description" content="Sway helps you pause before opening distracting apps, so every scroll can be a choice." />
+  <title>Sway — Make room for a choice</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar" aria-label="Main navigation">
+      <a class="brand" href="#today" aria-label="Sway home">
+        <span class="brand-mark"><span></span><span></span><span></span></span>
+        <span>sway<span class="brand-period">.</span></span>
+      </a>
+      <div class="side-label">YOUR SPACE</div>
+      <nav class="primary-nav">
+        <button class="nav-link active" data-page="today"><span class="nav-icon" data-icon="sun"></span><span>Today</span><span class="nav-dot"></span></button>
+        <button class="nav-link" data-page="apps"><span class="nav-icon" data-icon="grid"></span><span>My apps</span><span class="nav-count" id="navAppCount">4</span></button>
+        <button class="nav-link" data-page="rituals"><span class="nav-icon" data-icon="clock"></span><span>Rituals</span></button>
+        <button class="nav-link" data-page="insights"><span class="nav-icon" data-icon="chart"></span><span>Insights</span></button>
+      </nav>
+      <div class="sidebar-bottom">
+        <div class="privacy-note"><span class="privacy-lock" data-icon="lock"></span><div><strong>Your space, your data.</strong><small>Everything stays on this device.</small></div><span class="privacy-spark">✳</span></div>
+        <button class="profile-button" id="profileButton"><span class="avatar">A</span><span class="profile-copy"><strong>Alex Morgan</strong><small>Free plan · unlimited apps</small></span><span class="more-dots">···</span></button>
+      </div>
+    </aside>
+
+    <main class="main-area">
+      <header class="topbar">
+        <button class="mobile-brand" aria-label="Sway"><span class="brand-mark"><span></span><span></span><span></span></span><span>sway<span class="brand-period">.</span></span></button>
+        <div class="breadcrumb"><span>My space</span><span class="crumb-slash">/</span><strong id="crumbPage">Today</strong></div>
+        <div class="top-actions"><span class="preview-pill" title="Interactive browser prototype. It does not detect or pause other apps."><span></span> WEB PREVIEW</span><span class="date-pill"><span class="date-sun">✳</span><span id="dateLabel">MONDAY, OCTOBER 26</span></span><button class="icon-button settings-button" aria-label="Settings" id="settingsButton"><span data-icon="settings"></span></button><button class="mobile-menu" aria-label="Add an app to your circle" id="quickAddButton"><span data-icon="plus"></span></button></div>
+      </header>
+
+      <div class="page-wrap">
+        <section class="page-view active" id="page-today">
+          <div class="welcome-row"><div><div class="eyebrow"><span class="eyebrow-line"></span> A LITTLE MORE PRESENT</div><h1>Your day, with<br class="mobile-break" /> room to breathe<span class="heading-period">.</span></h1><p class="page-intro">You don't have to quit your apps. Just meet them with intention.</p><div class="prototype-note"><span>i</span><p><strong>Interactive preview:</strong> the pause screen is simulated here; pausing real Android app launches needs a native build. Insight numbers are sample data.</p></div></div><button class="text-link" id="editAppsLink">Personalize your space <span>↗</span></button></div>
+
+          <div class="hero-card">
+            <div class="hero-copy">
+              <div class="hero-kicker"><span class="live-dot"></span> YOUR DAILY PAUSE</div>
+              <h2>A small pause.<br />A more <em>you</em> choice.</h2>
+              <p>When you reach for a distracting app, Sway gives you a breath to decide if that’s what you need right now.</p>
+              <button class="primary-button" id="tryPause"><span class="button-orb">✳</span> Try a pause <span class="button-arrow">↗</span></button>
+              <div class="hero-footnote"><span data-icon="spark"></span> No lockouts. No guilt. Just a moment to choose.</div>
+            </div>
+            <div class="hero-art" aria-label="Illustration of a calming breathing circle">
+              <div class="art-stars"><i>✳</i><i>·</i><i>✦</i><i>·</i></div>
+              <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+              <div class="breath-orb"><div class="orb-inner"><span class="orb-label">TAKE A</span><strong>breath</strong><span class="orb-pulse"></span></div></div>
+              <div class="art-caption"><span class="caption-dot"></span> 4 seconds for yourself</div>
+              <div class="art-plant"><span></span><span></span><span></span></div>
+            </div>
+            <div class="hero-index">01 <span>/</span> 03</div>
+          </div>
+
+          <div class="stats-row" aria-label="Your weekly progress">
+            <article class="stat-card"><div class="stat-icon stat-icon-lilac"><span data-icon="wind"></span></div><div class="stat-label">PAUSES THIS WEEK <span class="stat-help" title="Times you've paused before opening a chosen app">i</span></div><div class="stat-value"><strong id="pauseCount">18</strong><span class="stat-trend trend-up">↗ 12%</span></div><div class="stat-sub">You're building a beautiful habit</div></article>
+            <article class="stat-card"><div class="stat-icon stat-icon-yellow"><span data-icon="leaf"></span></div><div class="stat-label">TIMES YOU CHOSE YOU</div><div class="stat-value"><strong id="choiceCount">6</strong><span class="stat-trend trend-soft">this week</span></div><div class="stat-sub">Little choices add up</div></article>
+            <article class="stat-card stat-card-streak"><div class="stat-icon stat-icon-green"><span data-icon="spark"></span></div><div class="stat-label">YOUR LONGEST STREAK</div><div class="stat-value"><strong>3<span class="value-unit"> days</span></strong><span class="streak-flower">✳</span></div><div class="stat-sub">A rhythm, not a rule</div></article>
+          </div>
+
+          <div class="section-heading"><div><div class="eyebrow small-eyebrow">GENTLE GUARDRAILS</div><h2>Your chosen apps <span class="app-total" id="appTotal">04</span></h2></div><button class="outline-button" id="addAppButton"><span>＋</span> Add an app</button></div>
+          <div class="app-grid" id="appGrid"></div>
+          <div class="footer-note"><span class="footer-spark">✳</span><span>Made for the moments between <em>“just checking”</em> and an hour later.</span><button id="footerLearn">How it works <span>↗</span></button></div>
+        </section>
+
+        <section class="page-view" id="page-apps">
+          <div class="welcome-row"><div><div class="eyebrow"><span class="eyebrow-line"></span> YOUR LITTLE LINEUP</div><h1>Apps you want<br class="mobile-break" /> to meet mindfully<span class="heading-period">.</span></h1><p class="page-intro">Choose any number. Every app you add is one more chance to pause.</p></div><button class="primary-button compact-primary" id="addAppButton2">＋ Add an app</button></div>
+          <div class="apps-summary"><div><span class="summary-number" id="summaryAppCount">4</span><span class="summary-label">apps in your circle</span></div><div class="summary-free"><span>✳</span> Unlimited apps, always free</div><p>We never open an app for you. Sway just offers a breath before you decide.</p></div>
+          <div class="section-heading apps-heading"><div><div class="eyebrow small-eyebrow">YOUR SELECTION</div><h2>In your circle <span class="app-total" id="appTotal2">04</span></h2></div><button class="sort-button" id="sortApps">A–Z <span>⌄</span></button></div>
+          <div class="app-grid app-grid-page" id="appGridPage"></div>
+          <div class="empty-state hidden" id="emptyApps"><div class="empty-orb">✳</div><h3>A fresh start.</h3><p>Add an app to give yourself a gentle moment before opening it.</p><button class="primary-button" id="emptyAddApp">＋ Choose your first app</button></div>
+        </section>
+
+        <section class="page-view" id="page-rituals">
+          <div class="welcome-row"><div><div class="eyebrow"><span class="eyebrow-line"></span> A RHYTHM THAT'S YOURS</div><h1>Make room for<br class="mobile-break" /> what matters<span class="heading-period">.</span></h1><p class="page-intro">Small, kind reminders for the moments you want to be more present.</p></div><button class="primary-button compact-primary" id="createRitual">＋ New ritual</button></div>
+          <div class="ritual-banner"><div class="ritual-banner-icon">☼</div><div><span class="hero-kicker">YOUR WEEK, GENTLY HELD</span><h2>Structure, with softness.</h2><p>Set a time to pause. Keep room for real life.</p></div><div class="banner-stamp">A GOOD<br />RHYTHM <span>✳</span></div></div>
+          <div class="section-heading ritual-section-heading"><div><div class="eyebrow small-eyebrow">YOUR RITUALS</div><h2>Little moments, on purpose</h2></div><span class="active-count"><span></span> 2 active</span></div>
+          <div class="ritual-list" id="ritualList"></div>
+          <div class="ritual-tip"><span>✳</span><div><strong>Gentle is sustainable.</strong><p>Your rituals are here to support you, not keep score. Change them whenever life changes.</p></div></div>
+        </section>
+
+        <section class="page-view" id="page-insights">
+          <div class="welcome-row"><div><div class="eyebrow"><span class="eyebrow-line"></span> A KINDER WAY TO LOOK BACK</div><h1>Look how far<br class="mobile-break" /> you came<span class="heading-period">.</span></h1><p class="page-intro">Not a scorecard. Just little proof that your attention is yours.</p></div><button class="range-button" id="rangeButton">This week <span>⌄</span></button></div>
+          <div class="insight-hero"><div><span class="hero-kicker">YOUR WEEK IN MOMENTS</span><h2>More choice.<br />Less autopilot.</h2><p>Every pause is a chance to notice what you actually need.</p></div><div class="insight-big-number"><strong id="insightPauses">18</strong><span>moments of<br />mindfulness</span><div class="insight-star">✳</div></div></div>
+          <div class="insight-grid"><article class="chart-card"><div class="chart-heading"><div><span class="eyebrow small-eyebrow">PAUSES, DAY BY DAY</span><h3>Your gentle rhythm</h3></div><span class="chart-chip">THIS WEEK</span></div><div class="bar-chart" id="barChart" role="img" aria-label="Bar chart of daily pauses this week"></div><div class="chart-legend"><span><i></i> Pauses</span><span class="chart-note">A quieter day counts, too.</span></div></article><article class="choice-card"><div class="choice-illustration">✳</div><span class="eyebrow small-eyebrow">WHEN YOU PAUSED</span><h3>You chose a little more <em>you.</em></h3><div class="choice-meter"><span style="width:38%"></span></div><div class="choice-metrics"><span>6 times you stepped away</span><strong>38%</strong></div><p>There’s no perfect number. Just noticing is progress.</p></article></div>
+          <div class="privacy-banner"><span class="privacy-banner-icon" data-icon="lock"></span><div><strong>Your patterns belong to you.</strong><p>These insights are saved on this device. Sway doesn't sell your data or send your app activity anywhere.</p></div><span class="privacy-banner-spark">✳</span></div>
+        </section>
+      </div>
+    </main>
+
+    <nav class="mobile-nav" aria-label="Mobile navigation"><button class="mobile-nav-link active" data-page="today"><span data-icon="sun"></span><small>Today</small></button><button class="mobile-nav-link" data-page="apps"><span data-icon="grid"></span><small>My apps</small></button><button class="mobile-nav-link" data-page="rituals"><span data-icon="clock"></span><small>Rituals</small></button><button class="mobile-nav-link" data-page="insights"><span data-icon="chart"></span><small>Insights</small></button></nav>
+  </div>
+
+  <div class="modal-backdrop hidden" id="appModal" role="dialog" aria-modal="true" aria-labelledby="appModalTitle"><div class="modal-card app-picker"><button class="modal-close" data-close="appModal" aria-label="Close">×</button><div class="modal-eyebrow">BUILD YOUR CIRCLE</div><h2 id="appModalTitle">Which apps feel a little<br />too easy to open?</h2><p class="modal-copy">Pick as many as you'd like. This is your space.</p><label class="search-field"><span data-icon="search"></span><input id="appSearch" type="search" placeholder="Find an app" autocomplete="off" /></label><div class="app-picker-list" id="appPickerList"></div><div class="picker-footer"><span><strong id="selectedCount">0</strong> selected <span class="picker-free">· always free</span></span><button class="primary-button" id="saveApps">Done <span class="button-arrow">↗</span></button></div></div></div>
+
+  <div class="modal-backdrop hidden" id="ritualModal" role="dialog" aria-modal="true" aria-labelledby="ritualModalTitle"><div class="modal-card ritual-modal"><button class="modal-close" data-close="ritualModal" aria-label="Close">×</button><div class="modal-eyebrow">A MOMENT, MADE YOURS</div><h2 id="ritualModalTitle">Create a gentle ritual</h2><p class="modal-copy">Pick a time to get a little more intentional.</p><label class="form-label">Name your ritual<input id="ritualName" type="text" maxlength="30" placeholder="e.g. A softer morning" /></label><label class="form-label">When should it start?<div class="time-input-wrap"><input id="ritualTime" type="time" value="20:30" /></div></label><div class="weekdays" role="group" aria-label="Choose days"><button type="button" class="weekday selected" aria-label="Monday" aria-pressed="true">M</button><button type="button" class="weekday" aria-label="Tuesday" aria-pressed="false">T</button><button type="button" class="weekday selected" aria-label="Wednesday" aria-pressed="true">W</button><button type="button" class="weekday" aria-label="Thursday" aria-pressed="false">T</button><button type="button" class="weekday selected" aria-label="Friday" aria-pressed="true">F</button><button type="button" class="weekday" aria-label="Saturday" aria-pressed="false">S</button><button type="button" class="weekday" aria-label="Sunday" aria-pressed="false">S</button></div><button class="primary-button full-button" id="saveRitual">Save ritual <span class="button-arrow">↗</span></button></div></div>
+
+  <div class="pause-overlay hidden" id="pauseOverlay" role="dialog" aria-modal="true" aria-labelledby="pauseTitle"><button class="pause-exit" id="closePause" aria-label="Close pause">×</button><div class="pause-brand"><span class="brand-mark"><span></span><span></span><span></span></span><span>sway<span class="brand-period">.</span></span></div><div class="pause-content"><span class="pause-overline"><span class="live-dot"></span> A MOMENT FOR YOU</span><div class="pause-breath-orb" id="pauseBreathOrb"><span>INHALE</span><strong>4</strong><small>follow the circle</small></div><h2 id="pauseTitle">Before the scroll,<br />come back to <em>you.</em></h2><p id="pausePrompt">Take one slow breath. What were you hoping to find?</p><div class="pause-actions"><button class="continue-button" id="continueApp">Continue to Instagram <span>↗</span></button><button class="choose-self-button" id="chooseSelf">Not right now — I choose me</button></div><div class="pause-note"><span>✳</span> No wrong answer. Just your choice.</div></div><div class="pause-footer"><span>YOUR ATTENTION IS YOURS</span><span>01 <i>·</i> 04</span></div></div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="app.js"></script>
+</body>
+</html>
